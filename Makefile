@@ -1,5 +1,5 @@
 #
-# cu --line /dev/tty.usbserial-A70063iH --speed 9600 --parity=none
+# cu --line /dev/tty.usbserial-ACDC1234 --speed 9600 --parity=none
 #
 
 ATPRG		=	avrdude
@@ -44,7 +44,7 @@ all:	$(TARGET)
 
 arduino:	$(TARGET)
 	@$(ECHO) "    o Programming Arduino"
-	@$(ATPRG) -P /dev/tty.usbserial-A70063iH -b 19200 -p atmega168 -c arduino -e -U flash:w:$(TARGET)
+	@$(ATPRG) -P /dev/tty.usbserial-ACDC1234 -b 19200 -p atmega168 -c arduino -e -U flash:w:$(TARGET)
 
 tidy:
 	@$(ECHO) "    o Tidying"
