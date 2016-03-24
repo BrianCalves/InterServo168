@@ -29,6 +29,8 @@ Positioning servo with 1350 microsecond pulse.
 
 ## Description
 
+![Illustration of Hardware Connections](HardwareIllustration.png?raw=true "Illustration of Hardware Connections among Servo, Diecimila, and Host Computer")
+
 The firmware allows you to connect to the Arduino Diecimila with a terminal program and command a hobby servo wired to the Diecimila.
 
 The firmware assumes the servomotor signal line is connected to PORTD, pin 6 (`PIND6`) of the ATmega168.
