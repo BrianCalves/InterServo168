@@ -1,9 +1,9 @@
 
 # InterServo168
 
-This is ATmega168 microcontroller firmware for interactive control of a hobby servomotor by an Arduino Diecimila.
+This is microcontroller firmware for interactive movement of a hobby servomotor by an Arduino Diecimila (ATmega168).
 
-The firmware maintains an interactive control session via the Arduino Diecimila's USB port and positions a servo, accordingly.
+The firmware maintains an interactive session with a host computer, via the Diecimila's USB port, and positions a servo according to commands received during that session.
 
 
 ## Synopsis
@@ -31,27 +31,29 @@ Positioning servo with 1350 microsecond pulse.
 
 ![Illustration of Hardware Connections](HardwareIllustration.png?raw=true "Illustration of Hardware Connections among Servo, Diecimila, and Host Computer")
 
-The firmware allows you to connect to the Arduino Diecimila with a terminal program and command a hobby servo wired to the Diecimila.
+The firmware allows you to connect to an Arduino Diecimila with a terminal program and command a hobby servo wired to the Diecimila.
 
 The firmware assumes the servomotor signal line is connected to PORTD, pin 6 (`PIND6`) of the ATmega168.
 
-This firmware differs from typical Arduino community practice, in that it does not employ the Arduino IDE or its language, Processing.
+This firmware differs from typical Arduino community practice, in that it does not employ the Arduino IDE, or its language, called Processing.
+Instead the firmware is written in C++, and compiled using GNU Make, as is common practice among software developers.
 
 
 ## System Requirements
 
-This C/C++ language firmware was developed on Mac OS X using:
+This C/C++ language firmware was developed on Mac OS X, using:
 
 - Arduino Diecimila (ATmega168, 5V, 16 Mhz)
 - avr-gcc (GCC) 4.3.0
 - avrdude version 5.11
 - GNU Make 3.81
 
-The build tools are, or were, commonly included with the Arduino IDE.
+These build tools are, or were, commonly included with the Arduino IDE.
 If you have Arduino IDE of suitable vintage, you likely already have the required tools installed on your host platform.
+Otherwise you can obtain them, separately, from the Internet.
 
-The instructions which follow assume you are using Mac OS X 10.5 or a similar, UNIX-like, operating system.
-If you have not already done so, you may need to add toolchain executables to your path in order to successfully execute the instructions which follow.
+The instructions which follow assume you are using Mac OS X 10.5, or a similar, UNIX-like, operating system.
+If you have not already done so, you may need to add toolchain executables to your shell's `PATH` variable, in order to successfully execute the instructions which follow.
 
 
 ## Compiling the Firmware
@@ -119,7 +121,7 @@ Resetting servo with 1500 microsecond pulse in [0, 65535].
 
 At this point, use the `,` and `.` keys, to position the servo.
 
-You can establish a software limit by moving the servo to the desired limit position and activating the `<` or `>` keys, for counter-clockwise limit or clockwise limit, respectively.
+You can establish software limits to servo rotation by moving the servo to the desired limit position and activating the `<` or `>` keys, for counter-clockwise limit or clockwise limit, respectively.
 
 Once you set a clockwise limit and counter-clockwise limit, you can use the `0` to `9` keys to position the servo, proportionately, within the limits you defined.
 
@@ -131,7 +133,7 @@ Once you set a clockwise limit and counter-clockwise limit, you can use the `0` 
 I tested the firmware with a small, low-voltage, low-current, hobby servomotor.
 
 A typical hobby servo has three conductors: `+V`, `Ground`, and `Control`.
-I wired the `Ground` and `+V` conductors of my servo to power supply pins, and the `Control` conductor to pin D6 of the Arduino Diecimila.
+I wired the `Ground` and `+V` conductors to power supply pins, and the `Control` conductor to pin D6 of the Arduino Diecimila.
 
 If you connect the servo control line to a different pin, you'll need to edit the firmware source code, accordingly.
 
